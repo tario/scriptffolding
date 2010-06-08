@@ -53,7 +53,7 @@ module ScriptffoldHelper
   def scriptffold_edit( options = {} )
     <<-eos
     #{scriptffold_js}
-    Name: <input type=text value=#{@obj ? @obj[controller.name_field] : "''" } width=50 ></input><br/>
+    Name: <input type=text value=#{@obj ? @obj[controller.name_field].to_s.inspect : "''" } width=50 ></input><br/>
     #{scriptffold_edit_buttons} <br/>
     #{scriptffold_edit_textarea options}
     eos
