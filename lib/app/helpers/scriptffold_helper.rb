@@ -35,4 +35,15 @@ module ScriptffoldHelper
     </textarea>
     eos
   end
+
+  def scriptffold_index( options = {} )
+
+    output = ""
+    @scripts.each do |script|
+      name = script[controller.name_field]
+      output << "#{h name} <a href='edit/#{script.id}'>edit</a> <br/>"
+    end
+
+    output
+  end
 end
