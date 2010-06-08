@@ -18,7 +18,6 @@ you should have received a copy of the gnu general public license
 along with scriptffolding.  if not, see <http://www.gnu.org/licenses/>.
 
 =end
-
 module ScriptffoldHelper
   def scriptffold_edit( options = {} )
 #     render :partial => "lslsls/sarasa", :collection => "qpq"
