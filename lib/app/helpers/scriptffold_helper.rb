@@ -35,7 +35,7 @@ module ScriptffoldHelper
     output = ""
     controller_name = controller.controller_name
     controller.class.script_buttons.each do |button|
-      output << "<img style='width:20px; height:20px;' src=#{button[1]} onclick='javascript:sendScriptAction(#{controller_name.inspect}, #{button[0].inspect}, #{@obj.id.to_s.inspect} )'></img>"
+      output << "<img style='width:20px; height:20px;' src=#{button[1]} onclick='javascript:sendScriptAction(#{controller_name.inspect}, #{button[0].inspect}, #{@obj ? @obj.id.to_s.inspect : '""'} )'></img>"
     end
 
     output
