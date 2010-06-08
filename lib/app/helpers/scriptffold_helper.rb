@@ -27,7 +27,7 @@ module ScriptffoldHelper
     height = options[:height] || "200px"
 
     <<-eos
-    <textarea  style="width:#{width};height:#{height};" id="codepresswindow#{rand(10000)}" class="codepress #{language} linenumbers-#{linenumbers ? "on" : "off" }">
+    <textarea  style="width:#{width};height:#{height};" id="codepresswindow" class="codepress #{language} linenumbers-#{linenumbers ? "on" : "off" }">
     #{@obj ? @obj[controller.content_field] : ""}
     </textarea>
     eos
@@ -36,17 +36,24 @@ module ScriptffoldHelper
   def scriptffold_edit_buttons
     output = ""
     controller.class.script_buttons.each do |button|
-      output << "<img src=#{button[1]} onclick='javascript:sendScriptAction(\"#{button[0]}\")'></img>"
+      output << "<img style='width:20px; height:20px;' src=#{button[1]} onclick='javascript:sendScriptAction(\"#{button[0]}\")'></img>"
     end
 
     output
   end
 
-  def scriptffold_edit( options = {} )
+  def scriptffold_js
     <<-eos
     <script src="/scriptffolding/codepress/codepress.js" type="text/javascript"></script>
-    #{scriptffold_edit_buttons} <br/>
+    <script src="/scriptffolding/script_action.js" type="text/javascript"></script>
+    eos
+  end
+
+  def scriptffold_edit( options = {} )
+    <<-eos
+    #{scriptffold_js}
     Name: <input type=text value=#{@obj ? @obj[controller.name_field] : "''" } width=50 ></input><br/>
+    #{scriptffold_edit_buttons} <br/>
     #{scriptffold_edit_textarea options}
     eos
   end
