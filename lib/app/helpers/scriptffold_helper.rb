@@ -62,7 +62,7 @@ module ScriptffoldHelper
     output = ""
     @scripts.each do |script|
       name = script[controller.name_field]
-      output << "#{h name} <a href='#{controller.controller_name}/edit/#{script.id}'>edit</a> <br/>"
+      output << "#{h name} <a href='/#{controller.controller_name}/edit/#{script.id}'>edit</a> <br/>"
     end
 
     output
