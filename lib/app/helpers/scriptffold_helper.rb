@@ -51,7 +51,6 @@ module ScriptffoldHelper
   def scriptffold_edit( options = {} )
     <<-eos
     #{scriptffold_js}
-    Name: <input id=input_name type=text value=#{@obj ? @obj[controller.name_field].to_s.inspect : "''" } width=50 ></input><br/>
     #{scriptffold_edit_buttons} <br/>
     #{scriptffold_edit_textarea options}
     eos
@@ -61,8 +60,7 @@ module ScriptffoldHelper
 
     output = ""
     @scripts.each do |script|
-      name = script[controller.name_field]
-      output << "#{h name} <a href='/#{controller.controller_name}/edit/#{script.id}'>edit</a> <br/>"
+      output << "<a href='/#{controller.controller_name}/edit/#{script.id}'>edit</a> <br/>"
     end
 
     output

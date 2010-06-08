@@ -24,7 +24,6 @@ ActionController::Base.class_eval do
   class << self
     attr_accessor :script_model_name
     attr_accessor :script_content_field
-    attr_accessor :script_name_field
     attr_accessor :script_buttons
 
 
@@ -37,7 +36,6 @@ ActionController::Base.class_eval do
   def self.scriptffolding( model_name = nil, options = {})
     self.script_model_name = model_name || :script
     self.script_content_field = options[:content_field] || :content
-    self.script_name_field = options[:name_field] || :name
 
     default_buttons = options[:default_buttons] || [:save]
 

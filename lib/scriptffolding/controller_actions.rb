@@ -35,7 +35,7 @@ module Scriptffolding
         @obj = obj
       else
 
-        obj = model_class.new( content_field => params[:content], name_field => params[:name] )
+        obj = model_class.new( content_field => params[:content] )
         obj.save
 
         @obj = obj
@@ -63,9 +63,6 @@ module Scriptffolding
     end
     def content_field
       self.class.script_content_field
-    end
-    def name_field
-      self.class.script_name_field
     end
   end
 end
