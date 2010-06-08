@@ -29,8 +29,8 @@ ActionController::Base.class_eval do
 
 
     def add_script_button( action, icon)
-      script_buttons ||= Array.new
-      script_buttons << [action.to_s,icon.to_s]
+      self.script_buttons ||= Array.new
+      self.script_buttons << [action.to_s,icon.to_s]
     end
   end
 
