@@ -31,11 +31,15 @@ module ScriptffoldHelper
     eos
   end
 
-  def scriptffold_edit_buttons
+  def scriptffold_edit_buttons( options = {} )
     output = ""
+
+
     controller_name = controller.controller_name
     controller.class.script_buttons.each do |button|
-      output << "<img style='width:20px; height:20px;' src=#{button[1]} onclick='javascript:sendScriptAction(#{controller_name.inspect}, #{button[0].inspect}, #{@obj ? @obj.id.to_s.inspect : '""'} )'></img>"
+      button_width = options[:button_width] || button[:button_width] || controller.class.scriptffold_options[:button_width] || "30px"
+      button_height = options[:button_height] || button[:button_height] || controller.class.scriptffold_options[:button_height] || "30px"
+      output << "<img style='width:#{button_width}; height:#{button_height};' src=#{button[:icon]} onclick='javascript:sendScriptAction(#{controller_name.inspect}, #{button[:action].inspect}, #{@obj ? @obj.id.to_s.inspect : '""'} )'></img>"
     end
 
     output
@@ -51,7 +55,7 @@ module ScriptffoldHelper
   def scriptffold_edit( options = {} )
     <<-eos
     #{scriptffold_js}
-    #{scriptffold_edit_buttons} <br/>
+    #{scriptffold_edit_buttons options} <br/>
     #{scriptffold_edit_textarea options}
     eos
   end
