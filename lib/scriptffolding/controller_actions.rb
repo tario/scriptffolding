@@ -44,7 +44,6 @@ module Scriptffolding
       obj.save
     end
 
-private
     def model_class
       model_name.to_s.capitalize.gsub(/s$/, "").constantize
     end

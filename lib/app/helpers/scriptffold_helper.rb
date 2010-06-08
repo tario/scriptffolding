@@ -20,7 +20,17 @@ along with scriptffolding.  if not, see <http://www.gnu.org/licenses/>.
 =end
 
 module ScriptffoldHelper
-  def scriptffold_edit
+  def scriptffold_edit( options = {} )
+#     render :partial => "lslsls/sarasa", :collection => "qpq"
 
+    language = options[:language] || "ruby"
+    linenumbers = options[:linenumbers] || true
+
+    <<-eos
+    <script src="/negai/codepress/codepress.js" type="text/javascript"></script>
+    <textarea id="myCpWindow" class="codepress #{language} linenumbers-#{linenumbers ? "on" : "off" }">
+    #{@obj[controller.content_field]}
+    </textarea>
+    eos
   end
 end
