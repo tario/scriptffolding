@@ -25,11 +25,22 @@ module Scriptffolding
     end
 
     def save
-      obj = model_class.new( content_field => params[:content], name_field => params[:name] )
-      obj.save
 
-      @obj = obj
+      if params[:id]
+        obj = model_class.find(params[:id])
+        obj.name = params[:name]
+        obj.content = params[:content]
+        obj.save
 
+        @obj = obj
+      else
+
+        obj = model_class.new( content_field => params[:content], name_field => params[:name] )
+        obj.save
+
+        @obj = obj
+
+      end
       render :action => :edit
     end
 
@@ -38,17 +49,6 @@ module Scriptffolding
       if obj
         @obj = obj
       end
-    end
-
-    def update
-      obj = model_class.find(params[:id])
-      obj.name = params[:name]
-      obj.content = params[:content]
-      obj.save
-
-      @obj = obj
-
-      render :action => :edit
     end
 
     def index
