@@ -27,6 +27,13 @@ ActionController::Base.class_eval do
     attr_accessor :script_model_name
     attr_accessor :script_content_field
     attr_accessor :script_name_field
+    attr_accessor :script_buttons
+
+
+    def add_script_button( action, icon)
+      script_buttons ||= Array.new
+      script_buttons << [action.to_s,icon.to_s]
+    end
   end
 
   def self.scriptffolding( model_name = nil, options = {})
@@ -34,9 +41,19 @@ ActionController::Base.class_eval do
     self.script_content_field = options[:content_field] || :content
     self.script_name_field = options[:name_field] || :name
 
+    default_buttons = options[:default_buttons] || [:save]
+
+    if default_buttons.include? :save
+      scriptffolding_button :action => "save", :icon => "/scriptffolding/save.png"
+    end
+
     self.class_eval do
       include Scriptffolding::ControllerActions
     end
+  end
+
+  def self.scriptffolding_button( options )
+    self.add_script_button(options[:action], options[:icon])
   end
 end
 

@@ -29,7 +29,7 @@ module ScriptffoldHelper
     height = options[:height] || "200px"
 
     <<-eos
-    <script src="/negai/codepress/codepress.js" type="text/javascript"></script>
+    <script src="/scriptffolding/codepress/codepress.js" type="text/javascript"></script>
     <textarea  style="width:#{width};height:#{height};" id="codepresswindow#{rand(10000)}" class="codepress #{language} linenumbers-#{linenumbers ? "on" : "off" }">
     #{@obj[controller.content_field]}
     </textarea>
