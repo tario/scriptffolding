@@ -19,20 +19,30 @@ along with scriptffolding.  if not, see <http://www.gnu.org/licenses/>.
 
 =end
 module ScriptffoldHelper
-  def scriptffold_edit( options = {} )
-#     render :partial => "lslsls/sarasa", :collection => "qpq"
 
+  def scriptffold_edit_textarea( options = {})
     language = options[:language] || "ruby"
     linenumbers = options[:linenumbers] || true
     width = options[:width] || "700px"
     height = options[:height] || "200px"
 
     <<-eos
-    <script src="/scriptffolding/codepress/codepress.js" type="text/javascript"></script>
-    Name: <input type=text value=#{@obj ? @obj[controller.name_field] : "''" } width=50 ></input><br/>
     <textarea  style="width:#{width};height:#{height};" id="codepresswindow#{rand(10000)}" class="codepress #{language} linenumbers-#{linenumbers ? "on" : "off" }">
     #{@obj ? @obj[controller.content_field] : ""}
     </textarea>
+    eos
+  end
+
+  def scriptffold_edit_buttons
+
+  end
+
+  def scriptffold_edit( options = {} )
+    <<-eos
+    <script src="/scriptffolding/codepress/codepress.js" type="text/javascript"></script>
+    #{scriptffold_edit_buttons}
+    Name: <input type=text value=#{@obj ? @obj[controller.name_field] : "''" } width=50 ></input><br/>
+    #{scriptffold_edit_textarea options}
     eos
   end
 
