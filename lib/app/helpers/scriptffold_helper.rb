@@ -29,8 +29,9 @@ module ScriptffoldHelper
 
     <<-eos
     <script src="/scriptffolding/codepress/codepress.js" type="text/javascript"></script>
+    Name: <input type=text value=#{@obj ? @obj[controller.name_field] : "''" } width=50 ></input><br/>
     <textarea  style="width:#{width};height:#{height};" id="codepresswindow#{rand(10000)}" class="codepress #{language} linenumbers-#{linenumbers ? "on" : "off" }">
-    #{@obj[controller.content_field]}
+    #{@obj ? @obj[controller.content_field] : ""}
     </textarea>
     eos
   end

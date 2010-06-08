@@ -21,6 +21,7 @@ along with scriptffolding.  if not, see <http://www.gnu.org/licenses/>.
 module Scriptffolding
   module ControllerActions
     def new
+      render :action => :edit
     end
 
     def save
