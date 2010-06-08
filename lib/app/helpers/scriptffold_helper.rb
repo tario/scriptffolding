@@ -25,10 +25,12 @@ module ScriptffoldHelper
 
     language = options[:language] || "ruby"
     linenumbers = options[:linenumbers] || true
+    width = options[:width] || "700px"
+    height = options[:height] || "200px"
 
     <<-eos
     <script src="/negai/codepress/codepress.js" type="text/javascript"></script>
-    <textarea id="myCpWindow" class="codepress #{language} linenumbers-#{linenumbers ? "on" : "off" }">
+    <textarea  style="width:#{width};height:#{height};" id="codepresswindow#{rand(10000)}" class="codepress #{language} linenumbers-#{linenumbers ? "on" : "off" }">
     #{@obj[controller.content_field]}
     </textarea>
     eos
