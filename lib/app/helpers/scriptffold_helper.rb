@@ -27,9 +27,7 @@ module ScriptffoldHelper
     height = options[:height] || "200px"
 
     <<-eos
-    <textarea  style="width:#{width};height:#{height};" id="codepresswindow" class="codepress #{language} linenumbers-#{linenumbers ? "on" : "off" }">
-    #{@obj ? @obj[controller.content_field] : ""}
-    </textarea>
+    <textarea  style="width:#{width};height:#{height};" id="codepresswindow" class="codepress #{language} linenumbers-#{linenumbers ? "on" : "off" }">#{@obj ? @obj[controller.content_field] : ""}</textarea>
     eos
   end
 
@@ -64,7 +62,7 @@ module ScriptffoldHelper
     output = ""
     @scripts.each do |script|
       name = script[controller.name_field]
-      output << "#{h name} <a href='edit/#{script.id}'>edit</a> <br/>"
+      output << "#{h name} <a href='#{controller.controller_name}/edit/#{script.id}'>edit</a> <br/>"
     end
 
     output
