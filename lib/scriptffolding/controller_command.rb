@@ -19,9 +19,8 @@ along with negai.  if not, see <http://www.gnu.org/licenses/>.
 
 =end
 require "scriptffolding/controller_actions"
-
 ActionController::Base.class_eval do
-  def scriptffolding( model_name = nil, options = {})
+  def self.scriptffolding( model_name = nil, options = {})
     model_name = model_name || :script
     content_field = options[:content_field] || :content
     name_field = options[:name_field] || :name
