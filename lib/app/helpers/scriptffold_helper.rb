@@ -34,13 +34,18 @@ module ScriptffoldHelper
   end
 
   def scriptffold_edit_buttons
+    output = ""
+    controller.class.script_buttons.each do |button|
+      output << "<img src=#{button[1]} onclick='javascript:sendScriptAction(\"#{button[0]}\")'></img>"
+    end
 
+    output
   end
 
   def scriptffold_edit( options = {} )
     <<-eos
     <script src="/scriptffolding/codepress/codepress.js" type="text/javascript"></script>
-    #{scriptffold_edit_buttons}
+    #{scriptffold_edit_buttons} <br/>
     Name: <input type=text value=#{@obj ? @obj[controller.name_field] : "''" } width=50 ></input><br/>
     #{scriptffold_edit_textarea options}
     eos
