@@ -27,6 +27,10 @@ module Scriptffolding
     def save
       obj = model_class.new( content_field => params[:content], name_field => params[:name] )
       obj.save
+
+      @obj = obj
+
+      render :action => :edit
     end
 
     def edit
@@ -41,6 +45,10 @@ module Scriptffolding
       obj.name = params[:name]
       obj.content = params[:content]
       obj.save
+
+      @obj = obj
+
+      render :action => :edit
     end
 
     def index
