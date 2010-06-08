@@ -41,7 +41,7 @@ module Scriptffolding
         @obj = obj
 
       end
-      render :action => :edit
+      redirect_to "/" + controller_name + "/edit/" + @obj.id.to_s
     end
 
     def edit
