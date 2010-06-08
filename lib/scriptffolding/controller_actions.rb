@@ -1,4 +1,3 @@
-# Scriptffolding
 =begin
 
 This file is part of the negai project, http://github.com/tario/negai
@@ -19,13 +18,14 @@ you should have received a copy of the gnu general public license
 along with negai.  if not, see <http://www.gnu.org/licenses/>.
 
 =end
-require "scriptffolding/controller_command"
+module Scriptffolding
+  module ControllerActions
+    def edit
 
-# add views and controllers directories of the plugin to ActiveSupport
-%w{ views controllers }.each do |dir|
-  path = File.join(File.dirname(__FILE__), 'app', dir)
-  $LOAD_PATH << path
-  ActiveSupport::Dependencies.load_paths << path
-  ActiveSupport::Dependencies.load_once_paths.delete(path)
+    end
+
+    def save
+
+    end
+  end
 end
-
