@@ -20,6 +20,15 @@ along with scriptffolding.  if not, see <http://www.gnu.org/licenses/>.
 =end
 module Scriptffolding
   module ControllerActions
+
+    class << self
+      attr_accessor :resources_directory
+    end
+
+    self.resources_directory = File.dirname(__FILE__) + "/../public/"
+
+
+
     def new
       render :action => :edit
     end
@@ -54,6 +63,13 @@ module Scriptffolding
     def index
       @scripts = model_class.all
     end
+
+
+    def icon
+      name = params[:name]
+
+    end
+
 
     def model_class
       model_name.to_s.capitalize.gsub(/s$/, "").constantize
