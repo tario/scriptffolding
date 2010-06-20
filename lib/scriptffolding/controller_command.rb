@@ -34,7 +34,7 @@ ActionController::Base.class_eval do
     end
   end
 
-  def self.scriptffolding( model_name = nil, options = {})
+  def self.scriptffold( model_name = nil, options = {})
     self.script_model_name = model_name || :script
     self.script_content_field = options[:content_field] || :content
     self.scriptffold_options = options
@@ -50,7 +50,7 @@ ActionController::Base.class_eval do
     end
   end
 
-  def self.scriptffolding_button( options )
+  def self.scriptffold_button( options )
     self.add_script_button(options)
   end
 end
