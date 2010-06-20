@@ -51,10 +51,6 @@ module Scriptffolding
       end
     end
 
-    def index
-      @scripts = model_class.all
-    end
-
     def model_class
       model_name.to_s.capitalize.gsub(/s$/, "").constantize
     end
