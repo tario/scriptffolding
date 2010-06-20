@@ -65,9 +65,15 @@ module Scriptffolding
     end
 
 
-    def icon
+    def scriptffold_icon
       name = params[:name]
+      extension = name.split(".").last
 
+      data = File.open(ControllerActions.resources_directory + name,"rb") do |file|
+        file.read
+      end
+
+      send_data(data, :type => "image/png",:disposition => 'inline')
     end
 
 
