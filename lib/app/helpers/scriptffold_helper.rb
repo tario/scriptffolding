@@ -63,45 +63,9 @@ module ScriptffoldHelper
   def scriptffold_index( options = {} )
 
     output = ""
-
-    content_field = controller.class.script_content_field.to_s || options[:content_field].to_s || "content"
-
-    table_attributes = options[:table_attributes]
-    if table_attributes.instance_of? Hash
-      table_attributes = table_attributes.map{|k,v| "#{k}=#{v.inspect}" }
-    else
-      table_attributes = table_attributes.to_s
-    end
-
-    default_hidden_fields = ["id", "created_at", "updated_at", content_field ]
-
-    hidden_fields = options[:hidden_fields] || default_hidden_fields
-    hidden_fields = hidden_fields.map(&:to_s)
-
-    columns = @scripts.first.class.columns.map(&:name) - hidden_fields
-
-    # columns
-    output << "<table #{table_attributes} >"
-    output << "<tr>"
-
-    columns.each do |col|
-      output << "<th> #{h col} </th>"
-    end
-
-    output << "<th></th>"
-
     @scripts.each do |script|
-      output << "</tr>"
-        columns.each do |col|
-          output << "<th> #{h script[col]} </th>"
-        end
-        output << "<th>"
-        output << "<a href='/#{controller.controller_name}/edit/#{script.id}'>edit</a> <br/>"
-        output << "</th>"
-      output << "<tr>"
+      output << "<a href='/#{controller.controller_name}/edit/#{script.id}'>edit</a> <br/>"
     end
-
-    output << "</table>"
 
     output
   end
