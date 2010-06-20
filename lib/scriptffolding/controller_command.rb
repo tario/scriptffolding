@@ -42,7 +42,7 @@ ActionController::Base.class_eval do
     default_buttons = options[:default_buttons] || [:save]
 
     if default_buttons.include? :save
-      scriptffolding_button :action => "save", :icon => "/scriptffolding/save.png"
+      scriptffold_button :action => "save", :icon => "/scriptffolding/save.png"
     end
 
     self.class_eval do
